@@ -1,10 +1,8 @@
-<script setup lang="ts">
-
-</script>
-
 <template>
   <div>
-    <div i-carbon-campsite inline-block />
+    <RouterLink to="/patients/1">
+      <span mx-2>Paciente 1</span>
+    </RouterLink>
   </div>
 </template>
 

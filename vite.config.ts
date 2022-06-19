@@ -13,6 +13,8 @@ import Inspect from 'vite-plugin-inspect'
 import Prism from 'markdown-it-prism'
 import LinkAttributes from 'markdown-it-link-attributes'
 import Unocss from 'unocss/vite'
+import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
+import presetIcons from '@unocss/preset-icons'
 
 const markdownWrapperClasses = 'prose prose-sm m-auto text-left'
 
@@ -46,6 +48,7 @@ export default defineConfig({
         'vue/macros',
         '@vueuse/head',
         '@vueuse/core',
+
       ],
       dts: 'src/auto-imports.d.ts',
       dirs: [
@@ -58,6 +61,7 @@ export default defineConfig({
     // https://github.com/antfu/unplugin-vue-components
     Components({
       // allow auto load markdown components under `./src/components/`
+      resolvers: [NaiveUiResolver()],
       extensions: ['vue', 'md'],
       // allow auto import and register components used in markdown
       include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
@@ -66,7 +70,9 @@ export default defineConfig({
 
     // https://github.com/antfu/unocss
     // see unocss.config.ts for config
-    Unocss(),
+    Unocss({
+
+    }),
 
     // https://github.com/antfu/vite-plugin-md
     // Don't need this? Try vitesse-lite: https://github.com/antfu/vitesse-lite

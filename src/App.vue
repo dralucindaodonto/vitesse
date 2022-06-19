@@ -1,4 +1,11 @@
 <script setup lang="ts">
+import { useStatefulComposable } from './composables/naivedark'
+const { globalState, updateValues }
+         = useStatefulComposable()
+onMounted(() => {
+  console.log('mounted in the composition api!')
+  updateValues(isDark.value)
+})
 // https://github.com/vueuse/head
 // you can use this to manipulate the document head in any components,
 // they will be rendered correctly in the html results with vite-ssg
@@ -22,5 +29,7 @@ useHead({
 </script>
 
 <template>
-  <RouterView />
+  <n-config-provider :theme="globalState.someString">
+    <RouterView />
+  </n-config-provider>
 </template>
