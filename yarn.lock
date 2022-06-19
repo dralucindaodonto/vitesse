@@ -1063,6 +1063,13 @@
   "resolved" "https://registry.npmjs.org/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz"
   "version" "1.2.1"
 
+"@iconify-icons/mdi@^1.2.19":
+  "integrity" "sha512-qIGhGzg1saBjAaNiB26cw0C2YCp7Dne/S7SkT9EXV7jSNrge+JdSvuk2eYfGs2ZIGmXsOu3xv6IKqqQGCzSJYw=="
+  "resolved" "https://registry.npmjs.org/@iconify-icons/mdi/-/mdi-1.2.19.tgz"
+  "version" "1.2.19"
+  dependencies:
+    "@iconify/types" "^1.1.0"
+
 "@iconify-json/carbon@^1.1.5":
   "integrity" "sha512-ENl8CIEo+7JcRzpJ/58i+dDc3fkNOO7gyNGg4S4JN5cAiVpvltYTVO86Oei7rpl8bKypJ0vk3B0BbzzTw7DclA=="
   "resolved" "https://registry.npmjs.org/@iconify-json/carbon/-/carbon-1.1.5.tgz"
@@ -1747,6 +1754,11 @@
     "@unocss/scope" "0.39.0"
     "@unocss/transformer-directives" "0.39.0"
     "magic-string" "^0.26.2"
+
+"@vicons/ionicons5@^0.12.0":
+  "integrity" "sha512-Iy1EUVRpX0WWxeu1VIReR1zsZLMc4fqpt223czR+Rpnrwu7pt46nbnC2ycO7ItI/uqDLJxnbcMC7FujKs9IfFA=="
+  "resolved" "https://registry.npmjs.org/@vicons/ionicons5/-/ionicons5-0.12.0.tgz"
+  "version" "0.12.0"
 
 "@vitejs/plugin-vue@^2.3.3":
   "integrity" "sha512-SmQLDyhz+6lGJhPELsBdzXGc+AcaT8stgkbiTFGpXPe8Tl1tJaBw1A6pxDqDuRsVkD8uscrkx3hA7QDOoKYtyw=="

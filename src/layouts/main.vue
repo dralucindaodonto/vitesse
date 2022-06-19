@@ -14,15 +14,6 @@ function receive() {
     <n-config-provider :theme="globalState.someString">
       <Navbar />
       <div class="mt-10  mx-auto text-center opacity-75 dark:opacity-50 text-sm text-gray-900 dark:text-gray-200">
-        {{ globalState.someBoolean }}
-        <n-card>
-          <n-el
-            tag="span"
-            style="color: var(--primary-color); transition: .3s var(--cubic-bezier-ease-in-out);"
-          >
-            I am a Span.
-          </n-el>
-        </n-card>
         <RouterView />
       </div>
     </n-config-provider>

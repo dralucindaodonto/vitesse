@@ -13,6 +13,8 @@
     "typecheck": "vue-tsc --noEmit"
   },
   "dependencies": {
+    "@iconify-icons/mdi": "^1.2.19",
+    "@vicons/ionicons5": "^0.12.0",
     "@vueuse/core": "^8.6.0",
     "@vueuse/head": "^0.7.6",
     "naive-ui": "^2.30.3",
