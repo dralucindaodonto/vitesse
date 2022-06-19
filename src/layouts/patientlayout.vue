@@ -30,7 +30,7 @@ const menuOptions: MenuOption[] = [
         { default: () => 'Perfil' },
       ),
     key: '/patients/1',
-    icon: renderIcon(WorkIcon),
+    //  icon: renderIcon(WorkIcon),
   },
   {
     label: () =>
@@ -45,7 +45,7 @@ const menuOptions: MenuOption[] = [
         { default: () => 'Anamnese' },
       ),
     key: '/patients/1/anamnese',
-    icon: renderIcon(WorkIcon),
+    //  icon: renderIcon(WorkIcon),
   },
   {
     label: () =>
@@ -60,7 +60,7 @@ const menuOptions: MenuOption[] = [
         { default: () => 'Orçamentos' },
       ),
     key: '/patients/1/orcamentos',
-    icon: renderIcon(WorkIcon),
+    //  icon: renderIcon(WorkIcon),
   },
   {
     label: () =>
@@ -75,7 +75,7 @@ const menuOptions: MenuOption[] = [
         { default: () => 'Pagamentos' },
       ),
     key: '/patients/1/pagamentos',
-    icon: renderIcon(WorkIcon),
+    //  icon: renderIcon(WorkIcon),
   },
   {
     label: () =>
@@ -90,7 +90,7 @@ const menuOptions: MenuOption[] = [
         { default: () => 'Prontuário' },
       ),
     key: '/patients/1/prontuario',
-    icon: renderIcon(WorkIcon),
+    //  icon: renderIcon(WorkIcon),
   },
   {
     label: () =>
@@ -105,7 +105,7 @@ const menuOptions: MenuOption[] = [
         { default: () => 'Evoluções' },
       ),
     key: '/patients/1/evolucoes',
-    icon: renderIcon(WorkIcon),
+    //  icon: renderIcon(WorkIcon),
   },
   {
     label: () =>
@@ -120,7 +120,7 @@ const menuOptions: MenuOption[] = [
         { default: () => 'Arquivos' },
       ),
     key: '/patients/1/arquivos',
-    icon: renderIcon(WorkIcon),
+    //  icon: renderIcon(WorkIcon),
   },
   {
     label: () =>
@@ -135,7 +135,7 @@ const menuOptions: MenuOption[] = [
         { default: () => 'Documentos' },
       ),
     key: '/patients/1/documentos',
-    icon: renderIcon(WorkIcon),
+    //  icon: renderIcon(WorkIcon),
   },
 ]
 </script>
@@ -173,7 +173,7 @@ export default {
     <div class="flex flex-no-wrap">
       <!-- Sidebar starts -->
       <!-- Remove class [ hidden ] and replace [ sm:flex ] with [ flex ] -->
-      <div class="w-76 absolute sm:relative   md:h-full flex-col justify-between hidden sm:flex  border-r-1 border-gray border-op-20">
+      <div class="w-76 absolute sm:relative bg-dark h-250 flex-col justify-between hidden sm:flex  border-r-1 border-gray border-op-20">
         <div class="px-8 pt-14">
           <div class="text-center   dark:text-gray-200 ">
             <img
@@ -189,7 +189,7 @@ export default {
             </p>
           </div>
 
-          <n-menu :options="menuOptions" />
+          <n-menu pl-6 :options="menuOptions" />
         </div>
       </div>
 

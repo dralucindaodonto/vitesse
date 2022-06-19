@@ -14,9 +14,6 @@ const nameinfo = { fullname: { name: 'renato', age: '30' } }
 
 <template>
   <div>
-    <div>
-      <n-button>Defa asd sadsa dsadult nameinfo. {{ nameinfo.fullname.age }}</n-button>
-    </div>
     <div text-4xl text-center>
       <n-space>
         <n-collapse :theme="darkTheme">
@@ -71,14 +68,6 @@ const nameinfo = { fullname: { name: 'renato', age: '30' } }
       </p>
     </template>
 
-    <div>
-      <n-button
-        :theme="darkTheme"
-        mt-8 text-sm
-        @click="router.back()"
-      >
-        vOLTAR
-      </n-button>
-    </div>
+    <div />
   </div>
 </template>

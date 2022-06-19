@@ -39,15 +39,6 @@ export default defineComponent({
         </n-radio>
       </n-space>
       <n-space vertical>
-        <n-space>
-          <n-button>
-            Dark
-          </n-button>
-          <n-button>
-            Light
-          </n-button>
-        </n-space>
-
         <n-card>
           <n-el
             tag="span"

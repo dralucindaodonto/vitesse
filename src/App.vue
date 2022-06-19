@@ -3,7 +3,6 @@ import { useStatefulComposable } from './composables/naivedark'
 const { globalState, updateValues }
          = useStatefulComposable()
 onMounted(() => {
-  console.log('mounted in the composition api!')
   updateValues(isDark.value)
 })
 // https://github.com/vueuse/head

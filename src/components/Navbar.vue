@@ -1,7 +1,7 @@
 <script setup lang='ts'>
 import { NIcon, darkTheme } from 'naive-ui'
 import type { Component } from 'vue'
-import { defineComponent, defineEmits, h, ref } from 'vue'
+import { defineComponent, h, ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import type { MenuOption } from 'naive-ui'
 import {
@@ -63,7 +63,7 @@ const menuOptions: MenuOption[] = [
         'div',
         {
           onClick: () => {
-            console.log('clinica clicked')
+
           },
         },
         { default: () => 'Clínica' },
@@ -88,30 +88,45 @@ const menuOptions: MenuOption[] = [
   },
   {
     label: () =>
-      h(
-        'button', {
-          class: 'pt-2',
-
-          onClick: () => {
-            console.log('clinica clicked')
-            toggleDark()
-            updateValues(isDark.value)
-          },
+      h('div', {
+        onClick: () => {
+          console.log('ok')
+          toggleDark()
+          updateValues(isDark.value)
         },
-        h('div', { i: 'carbon-sun dark:carbon-moon' }),
+      }
+      ,
+      { default: () => 'Darkmode' }),
 
-      ),
-    key: 'sunny',
-
+    key: 'Darkmode',
+    icon: renderIcon(WorkIcon),
   },
+  // {
+  //   label: () =>
+  //     h(
+  //       'button', {
+  //         class: 'pt-2',
+
+  //         onClick: () => {
+  //           console.log('clinica clicked')
+  //           toggleDark()
+  //           updateValues(isDark.value)
+  //         },
+  //       },
+  //       h('div', { i: 'carbon-sun dark:carbon-moon' }),
+
+  //     ),
+  //   key: 'sunny',
+
+  // },
 // SunnyOutline
 ]
 </script>
 
 <template>
-  <div class="px-4   text-center text-gray-700 dark:text-gray-200">
-    <nav text-xl pb-16 mt-3>
-      <div absolute flex-row flex justify-center top-6 pb-3 right-0 left-0 fw300 border-b-1 border-gray border-op-20>
+  <div class="px-4 bg-dark pt-4 text-center text-gray-700 dark:text-gray-200 border-b-1 border-gray border-op-20">
+    <nav text-xl pb-14>
+      <div absolute flex-row flex justify-center right-0 left-0>
         <n-menu v-model:value="activeKey" mode="horizontal" :options="menuOptions" />
       </div>
     </nav>
