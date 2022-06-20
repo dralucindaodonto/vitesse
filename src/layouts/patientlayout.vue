@@ -166,16 +166,16 @@ export default {
 </script> -->
 
 <template>
-  <div class="text-center   dark:text-gray-200 ">
+  <div class="text-center   dark:text-white ">
     <Navbar />
   </div>
-  <section opacity-75 text-gray-900 dark:text-gray-200>
+  <section text-gray-900 dark:text-white>
     <div class="flex flex-no-wrap">
       <!-- Sidebar starts -->
       <!-- Remove class [ hidden ] and replace [ sm:flex ] with [ flex ] -->
-      <div class="w-76 absolute sm:relative bg-dark h-250 flex-col justify-between hidden sm:flex  border-r-1 border-gray border-op-20">
+      <div class="min-w-76 absolute relative bg-dark h-250 flex-col justify-between hidden sm:flex  border-r-1 border-gray border-op-20">
         <div class="px-8 pt-14">
-          <div class="text-center   dark:text-gray-200 ">
+          <div class="text-center   dark:text-white ">
             <img
               src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp"
               class="rounded-full w-32 mb-4 mx-auto"

@@ -40,7 +40,7 @@ const menuOptions: MenuOption[] = [
         { default: () => 'Home' },
       ),
     key: 'home',
-    icon: renderIcon(WorkIcon),
+    //  icon: renderIcon(WorkIcon),
   },
   {
     label: () =>
@@ -55,7 +55,7 @@ const menuOptions: MenuOption[] = [
         { default: () => 'Pacientes' },
       ),
     key: 'patients',
-    icon: renderIcon(WorkIcon),
+    //  icon: renderIcon(WorkIcon),
   },
   {
     label: () =>
@@ -69,7 +69,7 @@ const menuOptions: MenuOption[] = [
         { default: () => 'Clínica' },
       ),
     key: 'clinic',
-    icon: renderIcon(WorkIcon),
+    //  icon: renderIcon(WorkIcon),
   },
   {
     label: () =>
@@ -84,51 +84,37 @@ const menuOptions: MenuOption[] = [
         { default: () => 'Configurações' },
       ),
     key: 'config',
-    icon: renderIcon(WorkIcon),
+    //  icon: renderIcon(WorkIcon),
   },
-  {
-    label: () =>
-      h('div', {
-        onClick: () => {
-          console.log('ok')
-          toggleDark()
-          updateValues(isDark.value)
-        },
-      }
-      ,
-      { default: () => 'Darkmode' }),
 
-    key: 'Darkmode',
-    icon: renderIcon(WorkIcon),
-  },
-  // {
-  //   label: () =>
-  //     h(
-  //       'button', {
-  //         class: 'pt-2',
-
-  //         onClick: () => {
-  //           console.log('clinica clicked')
-  //           toggleDark()
-  //           updateValues(isDark.value)
-  //         },
-  //       },
-  //       h('div', { i: 'carbon-sun dark:carbon-moon' }),
-
-  //     ),
-  //   key: 'sunny',
-
-  // },
-// SunnyOutline
 ]
 </script>
 
 <template>
-  <div class="px-4 bg-dark pt-4 text-center text-gray-700 dark:text-gray-200 border-b-1 border-gray border-op-20">
-    <nav text-xl pb-14>
-      <div absolute flex-row flex justify-center right-0 left-0>
-        <n-menu v-model:value="activeKey" mode="horizontal" :options="menuOptions" />
-      </div>
+  <div class="px-4 bg-dark pt-2 text-center text-gray-700 dark:text-white border-b-1 border-gray border-op-20">
+    <nav text-xl pb-3>
+      <n-space justify="space-between">
+        <div pt-1>
+          <n-button>Le Doctor</n-button>
+        </div>
+        <div>
+          <n-menu v-model:value="activeKey" mode="horizontal" :options="menuOptions" />
+        </div>
+
+        <button class="icon-btn mt-2 " @click="toggleDark(); updateValues(isDark.value)">
+          <div i="carbon-sun dark:carbon-moon" />
+        </button>
+      </n-space>
+      <!-- <div absolute flex-row flex justify-center>
+        <div>
+          <n-menu v-model:value="activeKey" mode="horizontal" :options="menuOptions" />
+        </div>
+        <div>
+          <button class="icon-btn mt-2 " @click="toggleDark(); updateValues(isDark.value)">
+            <div i="carbon-sun dark:carbon-moon" />
+          </button>
+        </div>
+      </div> -->
     </nav>
   </div>
 </template>

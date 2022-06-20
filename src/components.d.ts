@@ -8,6 +8,7 @@ declare module '@vue/runtime-core' {
     Counter: typeof import('./components/Counter.vue')['default']
     Footer: typeof import('./components/Footer.vue')['default']
     Navbar: typeof import('./components/Navbar.vue')['default']
+    NButton: typeof import('naive-ui')['NButton']
     NCard: typeof import('naive-ui')['NCard']
     NCol: typeof import('naive-ui')['NCol']
     NCollapse: typeof import('naive-ui')['NCollapse']
