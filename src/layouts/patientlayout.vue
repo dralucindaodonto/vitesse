@@ -194,7 +194,7 @@ export default {
       </div>
 
       <div class="container mx-auto py-10 md:w-4/5 w-11/12 px-6">
-        <n-card title="Card">
+        <n-card>
           <RouterView />
         </n-card>
       </div>

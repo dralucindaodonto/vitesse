@@ -6,6 +6,28 @@ export default defineComponent({
     const checkedValueRef = ref<string | null>(null)
 
     return {
+      SelectAnamnese: ref('song0'),
+      options: [
+        {
+          label: 'Anamnese padrão do sistema',
+          value: 'song0',
+          selected: true,
+        },
+        {
+          label: 'Anamnese de perguntas pessoais',
+          value: 'song1',
+        },
+        {
+          label: 'Anamnese 3',
+          value: 'song2',
+        },
+        {
+          label: 'Anamnese 4',
+          value: 'song3',
+
+        },
+
+      ],
 
       checkedValue: checkedValueRef,
       handleChange(e: Event) {
@@ -18,9 +40,12 @@ export default defineComponent({
 
 <template>
   <div>
+    <n-space vertical>
+      <n-select v-model:value="SelectAnamnese" :options="options" :consistent-menu-width="false" />
+    </n-space>
     <div pa-5>
       Você tem alergias ? Quais?
-      <n-space px-5>
+      <n-space py-2>
         <n-radio
           :checked="checkedValue === 'Definitely Maybe'"
           value="Definitely Maybe"
@@ -38,39 +63,9 @@ export default defineComponent({
           Não
         </n-radio>
       </n-space>
+
       <n-space vertical>
-        <n-card>
-          <n-el
-            tag="span"
-            style="color: var(--primary-color); transition: .3s var(--cubic-bezier-ease-in-out);"
-          >
-            I am a Span.
-          </n-el>
-          <!-- A basic anchor icon from Phosphor icons -->
-          <!-- An orange alarm from Material Design Icons -->
-          <div class="i-mdi-alarm text-orange-400" />
-          <!-- A large Vue logo -->
-          <!-- Sun in light mode, Moon in dark mode, from Carbon -->
-          <button class="i-carbon-sun dark:i-carbon-moon" />
-        <!-- Twemoji of laugh, turns to tear on hovering -->
-        </n-card>
-        <n-row>
-          <n-col :span="12">
-            <n-statistic label="Statistic" :value="99">
-              <template #prefix>
-                <div i-carbon-dicom-overlay />
-              </template>
-              <template #suffix>
-                / 100
-              </template>
-            </n-statistic>
-          </n-col>
-          <n-col :span="12">
-            <n-statistic label="Active Users">
-              1,234,123
-            </n-statistic>
-          </n-col>
-        </n-row>
+        <n-input type="text" placeholder="Resposta" />
       </n-space>
     </div>
   </div>
