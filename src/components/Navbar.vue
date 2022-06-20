@@ -101,7 +101,7 @@ const menuOptions: MenuOption[] = [
           <n-menu v-model:value="activeKey" mode="horizontal" :options="menuOptions" />
         </div>
 
-        <button class="icon-btn mt-2 " @click="toggleDark(); updateValues(isDark.value)">
+        <button class="icon-btn mt-2" @click="toggleDark(); updateValues(isDark.value)">
           <div i="carbon-sun dark:carbon-moon" />
         </button>
       </n-space>
