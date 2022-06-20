@@ -53,13 +53,13 @@ const menuOptions: MenuOption[] = [
         RouterLink,
         {
           to: {
-            path: '/patients/1/anamnese',
+            path: '/patients/1/budget',
 
           },
         },
         { default: () => 'Orçamentos' },
       ),
-    key: '/patients/1/orcamentos',
+    key: '/patients/1/budget',
     //  icon: renderIcon(WorkIcon),
   },
   {
@@ -68,13 +68,13 @@ const menuOptions: MenuOption[] = [
         RouterLink,
         {
           to: {
-            path: '/patients/1/anamnese',
+            path: '/patients/1/payment',
 
           },
         },
         { default: () => 'Pagamentos' },
       ),
-    key: '/patients/1/pagamentos',
+    key: '/patients/1/payment',
     //  icon: renderIcon(WorkIcon),
   },
   {
@@ -83,13 +83,13 @@ const menuOptions: MenuOption[] = [
         RouterLink,
         {
           to: {
-            path: '/patients/1/anamnese',
+            path: '/patients/1/treatment',
 
           },
         },
         { default: () => 'Prontuário' },
       ),
-    key: '/patients/1/prontuario',
+    key: '/patients/1/treatment',
     //  icon: renderIcon(WorkIcon),
   },
   {
@@ -98,13 +98,13 @@ const menuOptions: MenuOption[] = [
         RouterLink,
         {
           to: {
-            path: '/patients/1/anamnese',
+            path: '/patients/1/evolution',
 
           },
         },
         { default: () => 'Evoluções' },
       ),
-    key: '/patients/1/evolucoes',
+    key: '/patients/1/evolution',
     //  icon: renderIcon(WorkIcon),
   },
   {
@@ -113,13 +113,13 @@ const menuOptions: MenuOption[] = [
         RouterLink,
         {
           to: {
-            path: '/patients/1/anamnese',
+            path: '/patients/1/file',
 
           },
         },
         { default: () => 'Arquivos' },
       ),
-    key: '/patients/1/arquivos',
+    key: '/patients/1/file',
     //  icon: renderIcon(WorkIcon),
   },
   {
@@ -128,42 +128,17 @@ const menuOptions: MenuOption[] = [
         RouterLink,
         {
           to: {
-            path: '/patients/1/anamnese',
+            path: '/patients/1/document',
 
           },
         },
         { default: () => 'Documentos' },
       ),
-    key: '/patients/1/documentos',
+    key: '/patients/1/document',
     //  icon: renderIcon(WorkIcon),
   },
 ]
 </script>
-
-<!-- <script>
-export default {
-  name: 'LightWithIconsAtBottom',
-  data() {
-    return {
-      moved: true,
-    }
-  },
-  methods: {
-    sidebarHandler() {
-      const sideBar = document.getElementById('mobile-nav')
-      sideBar.style.transform = 'translateX(-260px)'
-      if (this.$data.moved) {
-        sideBar.style.transform = 'translateX(0px)'
-        this.$data.moved = false
-      }
-      else {
-        sideBar.style.transform = 'translateX(-260px)'
-        this.$data.moved = true
-      }
-    },
-  },
-}
-</script> -->
 
 <template>
   <div class="text-center   dark:text-white ">
@@ -173,7 +148,7 @@ export default {
     <div class="flex flex-no-wrap">
       <!-- Sidebar starts -->
       <!-- Remove class [ hidden ] and replace [ sm:flex ] with [ flex ] -->
-      <div class="min-w-76 absolute relative bg-dark h-250 flex-col justify-between hidden sm:flex  border-r-1 border-gray border-op-20">
+      <div class="min-w-76 absolute relative bg-dark h-250 flex-col justify-between flex  border-r-1 border-gray border-op-20">
         <div class="px-8 pt-14">
           <div class="text-center   dark:text-white ">
             <img

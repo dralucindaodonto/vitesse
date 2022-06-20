@@ -29,6 +29,8 @@ useHead({
 
 <template>
   <n-config-provider :theme="globalState.someString">
-    <RouterView />
+    <n-message-provider>
+      <RouterView />
+    </n-message-provider>
   </n-config-provider>
 </template>
