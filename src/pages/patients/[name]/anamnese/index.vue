@@ -39,36 +39,38 @@ export default defineComponent({
 </script>
 
 <template>
-  <div>
-    <n-space vertical>
-      <n-select v-model:value="SelectAnamnese" :options="options" :consistent-menu-width="false" />
-    </n-space>
-    <div pa-5>
-      Você tem alergias ? Quais?
-      <n-space py-2>
-        <n-radio
-          :checked="checkedValue === 'Definitely Maybe'"
-          value="Definitely Maybe"
-          name="basic-demo"
-          @change="handleChange"
-        >
-          Sim
-        </n-radio>
-        <n-radio
-          :checked="checkedValue === 'Be Here Now'"
-          value="Be Here Now"
-          name="basic-demo"
-          @change="handleChange"
-        >
-          Não
-        </n-radio>
-      </n-space>
-
+  <n-card title="Anamnese">
+    <div>
       <n-space vertical>
-        <n-input type="text" placeholder="Resposta" />
+        <n-select v-model:value="SelectAnamnese" :options="options" :consistent-menu-width="false" />
       </n-space>
+      <div pa-5>
+        Você tem alergias ? Quais?
+        <n-space py-2>
+          <n-radio
+            :checked="checkedValue === 'Definitely Maybe'"
+            value="Definitely Maybe"
+            name="basic-demo"
+            @change="handleChange"
+          >
+            Sim
+          </n-radio>
+          <n-radio
+            :checked="checkedValue === 'Be Here Now'"
+            value="Be Here Now"
+            name="basic-demo"
+            @change="handleChange"
+          >
+            Não
+          </n-radio>
+        </n-space>
+
+        <n-space vertical>
+          <n-input type="text" placeholder="Resposta" />
+        </n-space>
+      </div>
     </div>
-  </div>
+  </n-card>
 </template>
 
 <route lang="yaml">

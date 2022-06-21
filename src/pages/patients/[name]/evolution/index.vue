@@ -105,12 +105,14 @@ export default defineComponent({
 
 <template>
   <div>
-    <n-data-table
-      :columns="columns"
-      :data="data"
-      :pagination="pagination"
-      default-expand-all
-    />
+    <n-card title="Evoluções">
+      <n-data-table
+        :columns="columns"
+        :data="data"
+        :pagination="pagination"
+        default-expand-all
+      />
+    </n-card>
   </div>
 </template>
 

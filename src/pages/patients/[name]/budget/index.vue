@@ -100,12 +100,14 @@ export default defineComponent({
 
 <template>
   <div>
-    <n-data-table
-      :columns="columns"
-      :data="data"
-      :pagination="pagination"
-      :bordered="false"
-    />
+    <n-card title="Orçamentos">
+      <n-data-table
+        :columns="columns"
+        :data="data"
+        :pagination="pagination"
+        :bordered="false"
+      />
+    </n-card>
   </div>
 </template>
 

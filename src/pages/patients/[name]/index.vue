@@ -1,15 +1,19 @@
 <template>
-  <main>
+  <n-card title="Informações do paciente">
     <div>
       <n-space vertical>
-        <n-table striped :bordered="false">
+        <n-table :bordered="false">
           <thead>
-            <tr>
+            <!-- <tr>
               <th>Nome</th>
               <th>Nome do paciente</th>
-            </tr>
+            </tr> -->
           </thead>
           <tbody>
+            <tr>
+              <td>Nome</td>
+              <td>Nome do paciente completo</td>
+            </tr>
             <tr>
               <td>CPF</td>
               <td>111.111.111.11</td>
@@ -34,7 +38,7 @@
         </n-table>
       </n-space>
     </div>
-  </main>
+  </n-card>
 </template>
 
 <route lang="yaml">

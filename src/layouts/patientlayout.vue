@@ -169,9 +169,7 @@ const menuOptions: MenuOption[] = [
       </div>
 
       <div class="container mx-auto py-10 md:w-4/5 w-11/12 px-6">
-        <n-card>
-          <RouterView />
-        </n-card>
+        <RouterView />
       </div>
     </div>
   </section>

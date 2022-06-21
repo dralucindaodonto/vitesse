@@ -122,12 +122,14 @@ export default defineComponent({
 
 <template>
   <div>
-    <n-data-table
-      :columns="columns"
-      :data="data"
-      :pagination="pagination"
-      default-expand-all
-    />
+    <n-card title="Pagamentos">
+      <n-data-table
+        :columns="columns"
+        :data="data"
+        :pagination="pagination"
+        default-expand-all
+      />
+    </n-card>
   </div>
 </template>
 

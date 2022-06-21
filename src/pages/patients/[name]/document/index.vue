@@ -69,17 +69,19 @@ export default defineComponent({
 </script>
 
 <template>
-  <n-space pb-6>
-    <n-button>Novo documento</n-button>
-    <n-button>Nova receita</n-button>
-    <n-button>Novo atestado</n-button>
-  </n-space>
-  <n-data-table
-    :columns="columns"
-    :data="data"
-    :pagination="pagination"
-    :bordered="false"
-  />
+  <n-card title="Documentos">
+    <n-space pb-6>
+      <n-button>Novo documento</n-button>
+      <n-button>Nova receita</n-button>
+      <n-button>Novo atestado</n-button>
+    </n-space>
+    <n-data-table
+      :columns="columns"
+      :data="data"
+      :pagination="pagination"
+      :bordered="false"
+    />
+  </n-card>
 </template>
 
 <route lang="yaml">
