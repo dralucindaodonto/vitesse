@@ -7,6 +7,11 @@ const showDropdownRef = ref(false)
 const xRef = ref(0)
 const yRef = ref(0)
 
+interface Song {
+  no: number
+  title: string
+  length: string
+}
 const handleSelect = (key: string | number) => {
   // const message = useMessage()
   showDropdownRef.value = false
@@ -14,28 +19,13 @@ const handleSelect = (key: string | number) => {
   // message.info(String(key))
 }
 
-const handleContextMenu = (e: MouseEvent) => {
-  // console.log('left top', left, top)
-  e.preventDefault()
-  showDropdownRef.value = false
-  nextTick().then(() => {
-    showDropdownRef.value = true
-    xRef.value = e.clientX
-    yRef.value = e.clientY
-  })
-}
-
-interface Song {
-  no: number
-  title: string
-  length: string
-}
-
-const createColumns = ({
-  play,
-}: {
-  play: (row: Song) => void
-}): DataTableColumns<Song> => {
+const createColumns = (
+//   {
+//   play,
+// }: {
+//   play: (row: Song) => void
+// }
+): DataTableColumns<Song> => {
   return [
     {
       title: 'No',
@@ -66,11 +56,12 @@ const createColumns = ({
               label: 'Daisy Buchanan',
               key: 'daisy buchanan',
             }],
-          onClick: (e) => {
-            console.log(e)
-            play(row, e)
-          },
+          // onClick: (e) => {
+          //   console.log('onclick', e, row)
+          //   play(row, e)
+          // },
           onSelect: (e) => {
+            console.log('onselect', e, row)
             handleSelect(e)
           },
 
@@ -92,42 +83,13 @@ export default defineComponent({
     const message = useMessage()
 
     return {
-      renderOption: ({
-        node,
-        option,
-      }: {
-        node: VNode
-        option: DropdownOption | DropdownGroupOption
-      }) => {
-        return h(
-          NTooltip,
-          { keepAliveOnHover: false, style: { width: 'max-content' } },
-          {
-            trigger: () => [node],
-            default: () => option.key,
-          },
-        )
-      },
 
-      onClickoutside() {
-        message.info('clickoutside')
-        showDropdownRef.value = false
-      },
-
-      showDropdown: showDropdownRef,
-      x: xRef,
-      y: yRef,
       data,
 
       columns: createColumns({
-        play(row: Song, e: MouseEvent | KeyboardEvent) {
-          message.info(`Play ${row.title} - ${e}`)
-
-          // const left = refbus.value.getBoundingClientRect().left
-          // const top = refbus.value.getBoundingClientRect().top
-          // const { left, top } = refbus.value.getBoundingClientRect()
-          // handleContextMenu (e)
-        },
+        // play(row: Song, e: MouseEvent | KeyboardEvent) {
+        //   message.info(`Play ${row.title} - ${e}`)
+        // },
       }),
 
       pagination: false as const,
