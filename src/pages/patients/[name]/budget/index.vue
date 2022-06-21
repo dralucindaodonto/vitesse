@@ -99,12 +99,14 @@ export default defineComponent({
 </script>
 
 <template>
-  <n-data-table
-    :columns="columns"
-    :data="data"
-    :pagination="pagination"
-    :bordered="false"
-  />
+  <div>
+    <n-data-table
+      :columns="columns"
+      :data="data"
+      :pagination="pagination"
+      :bordered="false"
+    />
+  </div>
 </template>
 
 <route lang="yaml">

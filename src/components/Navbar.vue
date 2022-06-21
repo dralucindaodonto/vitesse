@@ -91,7 +91,7 @@ const menuOptions: MenuOption[] = [
 </script>
 
 <template>
-  <div class="px-4 bg-dark pt-2 text-center text-gray-700 dark:text-white border-b-1 border-gray border-op-20">
+  <div class="px-4 bg-dark pt-2 text-center text-gray-700 dark:text-white border-b-1 border-gray border-op-27">
     <nav text-xl pb-3>
       <n-space justify="space-between">
         <div pt-1>

@@ -148,7 +148,7 @@ const menuOptions: MenuOption[] = [
     <div class="flex flex-no-wrap">
       <!-- Sidebar starts -->
       <!-- Remove class [ hidden ] and replace [ sm:flex ] with [ flex ] -->
-      <div class="min-w-76 absolute relative bg-dark h-250 flex-col justify-between flex  border-r-1 border-gray border-op-20">
+      <div class="min-w-76 absolute relative bg-dark h-250 flex-col justify-between flex  border-r-1 border-gray border-op-27">
         <div class="px-8 pt-14">
           <div class="text-center   dark:text-white ">
             <img
