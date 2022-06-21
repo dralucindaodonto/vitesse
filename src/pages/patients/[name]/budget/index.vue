@@ -1,161 +1,113 @@
-<script setup lang="ts">
-import { defineComponent, h } from 'vue'
+<script lang="ts">
+import { defineComponent, h, nextTick, ref } from 'vue'
 import type { DataTableColumns } from 'naive-ui'
-import { NButton, NDropdown, NIcon, NTag, useMessage } from 'naive-ui'
-import type { Component } from 'vue'
-import {
-  Pencil as EditIcon,
-  LogOutOutline as LogoutIcon,
-  PersonCircleOutline as UserIcon,
-} from '@vicons/ionicons5'
-const message = useMessage()
-const renderIcon = (icon: Component) => {
-  return () => {
-    return h(NIcon, null, {
-      default: () => h(icon),
-    })
-  }
+import { NButton, useMessage } from 'naive-ui'
+
+const showDropdownRef = ref(false)
+const xRef = ref(0)
+const yRef = ref(0)
+
+const handleContextMenu = (e: MouseEvent) => {
+  e.preventDefault()
+  showDropdownRef.value = false
+  nextTick().then(() => {
+    showDropdownRef.value = true
+    xRef.value = e.clientX
+    yRef.value = e.clientY
+  })
 }
 
-const handleSelect = (key: string | number) => {
-  message.info(String(key.title))
-}
-
-const createData = (): RowData[] => [
-  {
-    key: 0,
-    title: 'John Brown',
-    value: 32,
-    date: '10/10/2022',
-    // tags: ['nice', 'developer'],
-  },
-  {
-    key: 1,
-    title: 'Jim Green',
-    value: 42,
-    date: '10/10/2022',
-    // tags: ['wow'],
-  },
-  {
-    key: 2,
-    title: 'Joe Black',
-    value: 32,
-    date: '10/10/2022',
-    // tags: ['cool', 'teacher'],
-  },
-]
-
-interface RowData {
-  key: number
+interface Song {
+  no: number
   title: string
-  value: number
-  date: string
-
+  length: string
 }
+
 const createColumns = ({
-  sendMail,
+  play,
 }: {
-  sendMail: (rowData: RowData) => void
-}): DataTableColumns<RowData> => {
+  play: (row: Song) => void
+}): DataTableColumns<Song> => {
   return [
     {
-      type: 'selection',
+      title: 'No',
+      key: 'no',
     },
     {
-      type: 'expand',
-      expandable: rowData => rowData.name !== 'Jim Green',
-      renderExpand: (rowData) => {
-        return 'Procedimentos'
-      },
-    },
-    {
-      title: 'Título',
+      title: 'Title',
       key: 'title',
     },
     {
-      title: 'Valor',
-      key: 'value',
+      title: 'Length',
+      key: 'length',
     },
     {
-      title: 'Data',
-      key: 'date',
-    },
-
-    //   render(row) {
-    //     const tags = row.tags.map((tagKey) => {
-    //       return h(
-    //         NTag,
-    //         {
-    //           style: {
-    //             marginRight: '6px',
-    //           },
-    //           type: 'info',
-    //           bordered: false,
-    //         },
-    //         {
-    //           default: () => tagKey,
-    //         },
-    //       )
-    //     })
-    //     return tags
-    //   },
-
-    {
-      title: 'Ação',
+      title: 'Action',
       key: 'actions',
       render(row) {
-        return h(NDropdown,
-          {
-            onSelect: () => handleSelect(row),
-            options: [
-              {
-                label: 'Profile',
-                key: 'profile',
-                icon: renderIcon(UserIcon),
-              },
-              {
-                label: 'Edit',
-                key: 'editProfile',
-                icon: renderIcon(EditIcon),
-              },
-              {
-                label: 'Logout',
-                key: 'logout',
-                icon: renderIcon(LogoutIcon),
-              },
-            ],
+        return h('div', {}, [h(NButton, {
+
+          onClick: (e) => {
+            console.log(e)
+            play(row, e)
           },
-          h(
-            NButton,
-            {
-              size: 'small',
 
-            },
-            { default: () => 'Send Email' },
-          ),
-
-        )
-
-        // return
+        }, { default: () => 'Menu' })])
       },
     },
   ]
 }
-// export default defineComponent({
-//   setup() {
-//     return {
 
-//   },
-// })
-const data = createData()
-const columns = createColumns({
-  sendMail(rowData) {
+const data: Song[] = [
+  { no: 3, title: 'Wonderwall', length: '4:18' },
+  { no: 4, title: 'Don\'t Look Back in Anger', length: '4:48' },
+  { no: 12, title: 'Champagne Supernova', length: '7:27' },
+]
 
+const options = [
+  {
+    label: 'Jay Gatsby',
+    key: 'jay gatsby',
+  },
+  {
+    label: 'Daisy Buchanan',
+    key: 'daisy buchanan',
+  },
+
+]
+export default defineComponent({
+  setup() {
+    const message = useMessage()
+
+    return {
+
+      handleSelect(key: string | number) {
+        showDropdownRef.value = false
+        message.info(String(key))
+      },
+
+      onClickoutside() {
+        message.info('clickoutside')
+        showDropdownRef.value = false
+      },
+
+      options,
+      showDropdown: showDropdownRef,
+      x: xRef,
+      y: yRef,
+      data,
+
+      columns: createColumns({
+        play(row: Song, e: MouseEvent | KeyboardEvent) {
+          message.info(`Play ${row.title} - ${e}`)
+          handleContextMenu (e)
+        },
+      }),
+
+      pagination: false as const,
+    }
   },
 })
-const pagination = {
-  valueSize: 10,
-}
 </script>
 
 <template>
@@ -163,7 +115,17 @@ const pagination = {
     :columns="columns"
     :data="data"
     :pagination="pagination"
-    default-expand-all
+    :bordered="false"
+  />
+  <n-dropdown
+    placement="bottom-start"
+    trigger="manual"
+    :x="x"
+    :y="y"
+    :options="options"
+    :show="showDropdown"
+    :on-clickoutside="onClickoutside"
+    @select="handleSelect"
   />
 </template>
 
