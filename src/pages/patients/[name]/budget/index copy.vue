@@ -1,18 +1,11 @@
 <script lang="ts">
 import { defineComponent, h, nextTick, ref } from 'vue'
 import type { DataTableColumns } from 'naive-ui'
-import { NButton, NDropdown, NTooltip, useMessage } from 'naive-ui'
+import { NButton, NTooltip, useMessage } from 'naive-ui'
 
 const showDropdownRef = ref(false)
 const xRef = ref(0)
 const yRef = ref(0)
-
-const handleSelect = (key: string | number) => {
-  // const message = useMessage()
-  showDropdownRef.value = false
-  console.log(key)
-  // message.info(String(key))
-}
 
 const handleContextMenu = (e: MouseEvent) => {
   // console.log('left top', left, top)
@@ -53,25 +46,11 @@ const createColumns = ({
       title: 'Action',
       key: 'actions',
       render(row) {
-        return h('div', { class: 'cursor-pointer' }, [h(NDropdown, {
-
+        return h('div', {}, [h(NButton, {
           ref: 'refbus',
-          trigger: 'hover',
-          options: [
-            {
-              label: 'Jay Gatsby',
-              key: 'jay gatsby',
-            },
-            {
-              label: 'Daisy Buchanan',
-              key: 'daisy buchanan',
-            }],
           onClick: (e) => {
             console.log(e)
             play(row, e)
-          },
-          onSelect: (e) => {
-            handleSelect(e)
           },
 
         }, { default: () => 'Menu' })])
@@ -86,6 +65,17 @@ const data: Song[] = [
   { no: 12, title: 'Champagne Supernova', length: '7:27' },
 ]
 
+const options = [
+  {
+    label: 'Jay Gatsby',
+    key: 'jay gatsby',
+  },
+  {
+    label: 'Daisy Buchanan',
+    key: 'daisy buchanan',
+  },
+
+]
 export default defineComponent({
   setup() {
     const refbus = ref()
@@ -108,12 +98,17 @@ export default defineComponent({
           },
         )
       },
+      handleSelect(key: string | number) {
+        showDropdownRef.value = false
+        message.info(String(key))
+      },
 
       onClickoutside() {
         message.info('clickoutside')
         showDropdownRef.value = false
       },
 
+      options,
       showDropdown: showDropdownRef,
       x: xRef,
       y: yRef,
@@ -122,11 +117,11 @@ export default defineComponent({
       columns: createColumns({
         play(row: Song, e: MouseEvent | KeyboardEvent) {
           message.info(`Play ${row.title} - ${e}`)
-
+          console.log(refbus)
           // const left = refbus.value.getBoundingClientRect().left
           // const top = refbus.value.getBoundingClientRect().top
           // const { left, top } = refbus.value.getBoundingClientRect()
-          // handleContextMenu (e)
+          handleContextMenu (e)
         },
       }),
 
@@ -142,6 +137,17 @@ export default defineComponent({
     :data="data"
     :pagination="pagination"
     :bordered="false"
+  />
+  <n-dropdown
+    placement="bottom-start"
+    trigger="manual"
+    :x="x"
+    :y="y"
+    :options="options"
+    :show="showDropdown"
+    :on-clickoutside="onClickoutside"
+    :render-option="renderOption"
+    @select="handleSelect"
   />
 </template>
 
