@@ -4,6 +4,7 @@ import type { DataTableColumns } from 'naive-ui'
 import { NButton, NTag, useMessage } from 'naive-ui'
 
 interface RowData {
+  dentist: string
   key: number
   title: string
   category: number

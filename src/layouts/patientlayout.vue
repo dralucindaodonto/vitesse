@@ -1,20 +1,12 @@
 <script setup lang="ts">
-import { NIcon, darkTheme } from 'naive-ui'
+ 
 
-import type { Component } from 'vue'
-import { defineComponent, h } from 'vue'
 
 import type { MenuOption } from 'naive-ui'
 import { RouterLink } from 'vue-router'
 
-import {
-  LogOutOutline as HomeIcon,
-  LaptopOutline as WorkIcon,
-} from '@vicons/ionicons5'
+const patient_id = '2';
 
-function renderIcon(icon: Component) {
-  return () => h(NIcon, null, { default: () => h(icon) })
-}
 
 const menuOptions: MenuOption[] = [
   {
@@ -23,13 +15,13 @@ const menuOptions: MenuOption[] = [
         RouterLink,
         {
           to: {
-            path: '/patients/1',
+            path: `/patients/${patient_id}`,
 
           },
         },
         { default: () => 'Perfil' },
       ),
-    key: '/patients/1',
+    key: `/patients/${patient_id}`,
     //  icon: renderIcon(WorkIcon),
   },
   {
@@ -38,13 +30,13 @@ const menuOptions: MenuOption[] = [
         RouterLink,
         {
           to: {
-            path: '/patients/1/anamnese',
+            path: `/patients/${patient_id}/anamnese`,
 
           },
         },
         { default: () => 'Anamnese' },
       ),
-    key: '/patients/1/anamnese',
+    key: `/patients/${patient_id}/anamnese`,
     //  icon: renderIcon(WorkIcon),
   },
   {
@@ -53,13 +45,13 @@ const menuOptions: MenuOption[] = [
         RouterLink,
         {
           to: {
-            path: '/patients/1/budget',
+            path: `/patients/${patient_id}/budget`,
 
           },
         },
         { default: () => 'Orçamentos' },
       ),
-    key: '/patients/1/budget',
+    key: `/patients/${patient_id}/budget`,
     //  icon: renderIcon(WorkIcon),
   },
   {
@@ -68,13 +60,13 @@ const menuOptions: MenuOption[] = [
         RouterLink,
         {
           to: {
-            path: '/patients/1/payment',
+            path: `/patients/${patient_id}/payment`,
 
           },
         },
         { default: () => 'Pagamentos' },
       ),
-    key: '/patients/1/payment',
+    key: `/patients/${patient_id}/payment`,
     //  icon: renderIcon(WorkIcon),
   },
   {
@@ -83,13 +75,13 @@ const menuOptions: MenuOption[] = [
         RouterLink,
         {
           to: {
-            path: '/patients/1/treatment',
+            path: `/patients/${patient_id}/treatment`,
 
           },
         },
         { default: () => 'Prontuário' },
       ),
-    key: '/patients/1/treatment',
+    key: `/patients/${patient_id}/treatment`,
     //  icon: renderIcon(WorkIcon),
   },
   {
@@ -98,13 +90,13 @@ const menuOptions: MenuOption[] = [
         RouterLink,
         {
           to: {
-            path: '/patients/1/evolution',
+            path: `/patients/${patient_id}/evolution`,
 
           },
         },
         { default: () => 'Evoluções' },
       ),
-    key: '/patients/1/evolution',
+    key: `/patients/${patient_id}/evolution`,
     //  icon: renderIcon(WorkIcon),
   },
   {
@@ -113,13 +105,13 @@ const menuOptions: MenuOption[] = [
         RouterLink,
         {
           to: {
-            path: '/patients/1/file',
+            path: `/patients/${patient_id}/file`,
 
           },
         },
         { default: () => 'Arquivos' },
       ),
-    key: '/patients/1/file',
+    key: `/patients/${patient_id}/file`,
     //  icon: renderIcon(WorkIcon),
   },
   {
@@ -128,20 +120,20 @@ const menuOptions: MenuOption[] = [
         RouterLink,
         {
           to: {
-            path: '/patients/1/document',
+            path: `/patients/${patient_id}/document`,
 
           },
         },
         { default: () => 'Documentos' },
       ),
-    key: '/patients/1/document',
+    key: `/patients/${patient_id}/document`,
     //  icon: renderIcon(WorkIcon),
   },
 ]
 </script>
 
 <template>
-  <div class="text-center   dark:text-white ">
+  <div class="   dark:text-white ">
     <Navbar />
   </div>
   <section text-gray-900 dark:text-white>

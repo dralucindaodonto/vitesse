@@ -13,7 +13,7 @@ function receive() {
   <div>
     <n-config-provider :theme="globalState.someString">
       <Navbar />
-      <div class="mt-10  mx-auto text-center  text-sm text-gray-900 dark:text-white">
+      <div class="mt-10 text-sm text-gray-900 dark:text-white">
         <RouterView />
       </div>
     </n-config-provider>

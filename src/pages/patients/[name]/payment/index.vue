@@ -5,6 +5,7 @@ import { NButton, NTag, useMessage } from 'naive-ui'
 
 interface RowData {
   key: number
+  extra: string
   title: string
   value: number
   date: string
@@ -24,7 +25,22 @@ const createColumns = ({
       type: 'expand',
       expandable: rowData => rowData.title !== 'Jim Green',
       renderExpand: (rowData) => {
-        return `${rowData.title} is a good guy.`
+        const rendered = h(
+          NTag,
+          {
+            style: {
+              marginRight: '6px',
+            },
+            type: 'info',
+            bordered: false,
+          },
+          {
+            default: () => rowData.extra,
+          },
+        )
+        return rendered
+
+
       },
     },
     {
@@ -85,6 +101,7 @@ const createData = (): RowData[] => [
     value: 32,
     date: '01/01/2022',
     tags: ['pago'],
+    extra: 'info1',
   },
   {
     key: 1,
@@ -92,6 +109,7 @@ const createData = (): RowData[] => [
     value: 42,
     date: '01/01/2022',
     tags: ['aberto'],
+    extra: 'info2',
   },
   {
     key: 2,
@@ -99,6 +117,7 @@ const createData = (): RowData[] => [
     value: 32,
     date: '01/01/2022',
     tags: ['pago'],
+    extra: 'info4',
   },
 ]
 
@@ -123,12 +142,7 @@ export default defineComponent({
 <template>
   <div>
     <n-card title="Pagamentos">
-      <n-data-table
-        :columns="columns"
-        :data="data"
-        :pagination="pagination"
-        default-expand-all
-      />
+      <n-data-table :columns="columns" :data="data" :pagination="pagination" default-expand-all />
     </n-card>
   </div>
 </template>

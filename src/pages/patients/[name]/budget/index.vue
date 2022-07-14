@@ -1,11 +1,10 @@
 <script lang="ts">
-import { defineComponent, h, nextTick, ref } from 'vue'
+import { defineComponent, h,  ref } from 'vue'
 import type { DataTableColumns } from 'naive-ui'
-import { NButton, NDropdown, NTooltip, useMessage } from 'naive-ui'
+import {  NDropdown } from 'naive-ui'
 
 const showDropdownRef = ref(false)
-const xRef = ref(0)
-const yRef = ref(0)
+ 
 
 interface Song {
   no: number
@@ -20,11 +19,11 @@ const handleSelect = (key: string | number) => {
 }
 
 const createColumns = (
-//   {
-//   play,
-// }: {
-//   play: (row: Song) => void
-// }
+  //   {
+  //   play,
+  // }: {
+  //   play: (row: Song) => void
+  // }
 ): DataTableColumns<Song> => {
   return [
     {
@@ -79,18 +78,12 @@ const data: Song[] = [
 
 export default defineComponent({
   setup() {
-    const refbus = ref()
-    const message = useMessage()
-
+ 
     return {
 
       data,
 
-      columns: createColumns({
-        // play(row: Song, e: MouseEvent | KeyboardEvent) {
-        //   message.info(`Play ${row.title} - ${e}`)
-        // },
-      }),
+      columns: createColumns(),
 
       pagination: false as const,
     }
@@ -101,12 +94,7 @@ export default defineComponent({
 <template>
   <div>
     <n-card title="Orçamentos">
-      <n-data-table
-        :columns="columns"
-        :data="data"
-        :pagination="pagination"
-        :bordered="false"
-      />
+      <n-data-table :columns="columns" :data="data" :pagination="pagination" :bordered="false" />
     </n-card>
   </div>
 </template>
