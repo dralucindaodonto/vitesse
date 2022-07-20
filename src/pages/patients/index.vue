@@ -1,20 +1,155 @@
 
-<script setup lang="ts">
-
-type Patients = {
+<script lang="ts">
+import { h, defineComponent } from 'vue'
+import { NButton, useMessage, DataTableColumns, NAvatar } from 'naive-ui'
+type Patient = {
   avatar: string
-  nome: string
+  title: string
+ 
   celular: string
 }
 
+const createColumns = ({
+  play
+}: {
+  play: (row: Patient) => void
+}): DataTableColumns<Patient> => {
+  return [ 
+         //   return h('div', { 'class': 'flex flex-row opacity-0 hover:opacity-100' }, [h(
+    //group-hover:text-gray-900
+    {
+      //title: 'Avatar',
+      key: 'avatar',
+      width: '5%',
+      render(row) {
+        return h('div', {}, [h(
+          NAvatar,
+          {
+            class:"mt-3",
+            round: true,
+            size: 45,
+            src: row.avatar,
+            onClick: () => console.log('avatar', row)
+          },
 
-const data: Patients[] = [
-  { avatar: 'https://mdbcdn.b-cdn.net/img/new/avatars/8.webp', nome: 'Lucinda Aparecida de Siqueira Dias Monteiro Lobato', celular: '12991155566' },
-  { avatar: 'https://mdbcdn.b-cdn.net/img/new/avatars/8.webp', nome: "Don't Look Back in Anger", celular: '' },
-  { avatar: 'https://mdbcdn.b-cdn.net/img/new/avatars/8.webp', nome: 'Champagne Supernova', celular: '74354354327' }
+        )])
+
+
+      }
+    },
+    {
+      // title: 'Title',
+      width: '90%',
+      key: 'title',
+      render(row) {
+        return [h(
+          'div',
+          {
+            'op30': true,
+            'text-lg': true,
+            'innerHTML': row.title,
+            onClick: () => console.log('title', row)
+          },
+
+        ),
+        h(
+          'div',
+          {
+            'op30': true,
+            'text-lg': true,
+            'innerHTML': row.celular,
+            onClick: () => console.log('title', row)
+          },
+
+        )]
+      }
+    },
+    // {
+    //   //  title: 'Links',
+    //   key: 'celular',
+    //    width: '5%',
+    //   render(row) {
+    //     return h('div', { 'class': 'flex flex-row opacity-0 hover:opacity-100' }, [h(
+    //       'div',
+    //       {
+
+    //         'class': 'mx3',
+    //         'text-lg': true,
+    //         'innerHTML': 'Ver perfil',
+    //         onClick: () => console.log('title', row)
+    //       },
+
+    //     ),
+    //     h(
+    //       'div',
+    //       {
+    //         'class': 'mx3',
+    //         'text-lg': true,
+    //         'innerHTML': 'Whatsapp',
+    //         onClick: () => console.log('title', row)
+    //       },
+    //     ),
+    //      h(
+    //       'div',
+    //       {
+    //         'class': 'mx3',
+    //         'text-lg': true,
+    //         'innerHTML': 'Editar',
+    //         onClick: () => console.log('title', row)
+    //       },
+
+    //     ),
+    //      h(
+    //       'div',
+    //       {
+    //         'class': 'mx3',
+    //         'text-lg': true,
+    //         'innerHTML': 'Deletar',
+    //         onClick: () => console.log('title', row)
+    //       },
+
+    //     )])
+    //   }
+    // },
+    {
+      //  title: 'Action',
+      key: 'actions',
+      render(row) {
+        return h(
+          NButton,
+          {
+            strong: true,
+            tertiary: true,
+            size: 'small',
+            onClick: () => play(row)
+          },
+          { default: () => 'Play' }
+        )
+      }
+    }
+  ]
+}
+
+const data: Patient[] = [
+  { avatar: 'https://mdbcdn.b-cdn.net/img/new/avatars/8.webp', title: 'Lucinda Aparecida de Siqueira Dias Monteiro Lobato', celular: '12991155566' },
+  { avatar: 'https://mdbcdn.b-cdn.net/img/new/avatars/8.webp', title: "Don't Look Back in Anger", celular: '' },
+  { avatar: 'https://mdbcdn.b-cdn.net/img/new/avatars/8.webp', title: 'Champagne Supernova', celular: '74354354327' }
 ]
 
-
+export default defineComponent({
+  setup() {
+    const message = useMessage()
+    return {
+      data,
+      columns: createColumns({
+        play(row: Patient) {
+          message.info(`Play ${row.title}`)
+        }
+      }),
+      pagination: false as const
+    }
+  }
+})
 </script>
 <template>
   <section id="patientList">
@@ -22,58 +157,10 @@ const data: Patients[] = [
       <RouterLink to="/patients/1">
         <span mx-2>Paciente 1</span>
       </RouterLink>
-	<p class="flex">
-			<span class="mr-1">Icon imported from `@iconify-json/carbon`:</span>
-      <!-- A basic anchor icon from Phosphor icons -->
-<div class="i-ph-anchor-simple-thin" />
-<!-- An orange alarm from Material Design Icons -->
-<div class="i-mdi-alarm text-orange-400" />
-<!-- A large Vue logo -->
-<div class="i-ic-outline-whatsapp text-3xl" />
-<!-- Sun in light mode, Moon in dark mode, from Carbon -->
-<button class="i-carbon-sun dark:i-carbon-moon" />
-<!-- Twemoji of laugh, turns to tear on hovering -->
-<div class="i-twemoji-grinning-face-with-smiling-eyes hover:i-twemoji-face-with-tears-of-joy" />
-			<a
-				class="i-carbon-logo-github text-blue-600 hover:text-red-600 icon24 inline-icon"
-				href="https://github.com/unocss/unocss"
-				target="_blank"
-			></a>
-		</p>
 
       <n-card title="Pacientes">
-
-
-        <n-space vertical>
-          <n-table>
-            <thead>
-              <!-- <tr>
-                  <th>Abandon</th>
-                  <th>Abormal</th>
-                  <th>Abolish</th>
-                  <th>...</th>
-                  <th>It's hard to learn words</th>
-                </tr> -->
-            </thead>
-            <tbody>
-              <tr v-for="(patient, i ) in data" :key="i">
-                <td width="5%">
-                  <n-avatar :size="48" :round="true" :src="patient.avatar" />
-                </td>
-                <td class="group" mx4 all:transition-400>{{ patient.nome }}
-
-                  <span transicao>Perfil</span>
-                  <span class="i-ic-outline-whatsapp" transicao> <span>Whatsapp</span></span>
-                  <span transicao>Editar</span>
-                  <span transicao>Deletar</span>
-                </td>
-
-              </tr>
-
-            </tbody>
-          </n-table>
-        </n-space>
-
+        <n-data-table class="n-table-remove-thead" striped :columns="columns" :data="data" :pagination="pagination"
+          :bordered="false" />
       </n-card>
 
     </div>
@@ -87,6 +174,9 @@ const data: Patients[] = [
 <style scoped >
 :deep(.n-data-table-th) {
   display: none;
+}
+:deep(.n-data-table-td) {
+  padding-top: 10px !important;
 }
 </style>
  

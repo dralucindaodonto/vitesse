@@ -63,8 +63,8 @@ const createColumns = (
             console.log('onselect', e, row)
             handleSelect(e)
           },
-
-        }, { default: () => 'Menu' })])
+//<div class="i-mdi-alarm text-orange-400" />
+        }, { default: () => h('div', { class: 'i-mdi-alarm text-orange-400' }) })])
       },
     },
   ]
